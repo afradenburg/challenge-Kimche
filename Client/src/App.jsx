@@ -1,17 +1,22 @@
-import './App.css'
+import "./App.css";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Home } from "./views/home"
+import { Home } from "./views/home";
+import CharactersContainer from './components/CharactersContainer';
+
+
 
 function App() {
-
   return (
-      <div>
-        <Routes>
-          <Route path="/" element={<Home/>}> </Route>
-        </Routes>
+    <div>
+      {/* <CharactersContainer/>  */}
+      <Routes>
+        <Route path="/" element={<Home />}>
+          {" "}
+        </Route>
+      </Routes>
     </div>
-  )
+  );
 }
 
-export default App
-  
+export default App;
