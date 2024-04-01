@@ -1,8 +1,12 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
+  align-self: center;
+  /* background-color: aliceblue; */
+  /* background-image: url("./assets/form.jpg"); */
+
 }
 
 .logo {
