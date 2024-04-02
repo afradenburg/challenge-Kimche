@@ -55,6 +55,8 @@ const CharactersContainer = () => {
     fetchData();
   }, []);
 
+
+
   return (
     <CardStyled>
       {characters.map((character) => (
