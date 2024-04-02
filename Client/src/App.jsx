@@ -15,7 +15,7 @@ function App() {
   }
   
   useEffect(()=>{
-    if(searchTerm) searchCharacterHandler(searchTerm) 
+    searchCharacterHandler(searchTerm) 
   },[searchTerm])
 
   return (
