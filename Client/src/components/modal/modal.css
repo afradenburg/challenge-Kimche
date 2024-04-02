@@ -12,13 +12,29 @@
   }
   
   .modal-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    border-radius: 15px;
+    width: 30%;
+  }
+  @media (max-width: 768px) {
+    .modal-content {
+      width: 80%; 
+      margin: 10% auto; 
+    }
   }
   
   .hidden {
     display: none;
+  }
+  
+  .img {
+    border-radius: 150px;
+    width: 80%;
   }

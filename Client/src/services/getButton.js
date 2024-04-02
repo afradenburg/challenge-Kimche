@@ -4,7 +4,7 @@ export const getButton = async (person,  setOptionFilters , filters) => {
    const speciesList = person.flatMap((character) => character.species);
    return speciesList
    
-   console.log(speciesList);
+ 
  };
    // if(person.length > 0){
    //     await person.map((person) => {

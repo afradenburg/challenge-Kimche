@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CardStyled } from "../styledComponents/cards";
+import { CardStyled } from "../styledComponents/cardsStyled";
 import { Character } from "./Character"
 
 export const Characters = ( {characters, setSelectCharacter} ) => {

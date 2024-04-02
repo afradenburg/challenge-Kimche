@@ -1,8 +1,4 @@
-export const getCharacters = async (term) => {
-   
-  const getStatus = "Alive";
-  const getSpecies = "";
-  const getGender = "";
+export const getCharacters = async (term, object) => {
   try {
     const filterQuery = {
       query: `
@@ -23,9 +19,9 @@ export const getCharacters = async (term) => {
           }
         }`,
       variables: {
-        getStatus: getStatus,
-        getSpecies: getSpecies,
-        getGender: getGender,
+        getStatus: object.getStatus !== undefined ? object.getStatus : "", 
+        getSpecies: object.getSpecies !== undefined ? object.getSpecies : "",
+        getGender: object.getGender !== undefined ? object.getGender : "",
       },
     };
     const requestBody = JSON.stringify({
