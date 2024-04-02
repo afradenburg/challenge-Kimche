@@ -31,7 +31,6 @@ export const Content = styled.div`
 `;
 
 export const CardStyle = styled.div`
-  
   background-position: center;
   background-color: #353c43fa;
   color: wheat;

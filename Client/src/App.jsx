@@ -1,20 +1,29 @@
-import "./App.css";
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import { Home } from "./views/home";
-import CharactersContainer from './components/allCharacters';
-import { DetailCard } from "./views/detailCard";
-
-
+import React, { useEffect, useState } from "react";
+import { Characters } from "./components/Characters";
+import Search from "./components/Search";
+import { getCharacters } from "./services/rickAndMortyService";
+import { Modal } from "./components/modal/Modal";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [characters, setCharacters] = useState([]);
+  const [selectCharacter, setSelectCharacter] = useState({})
+  const [isOpen, setIsOpen] = useState(false);
+
+  const searchCharacterHandler = async (term) =>{
+    setCharacters(await getCharacters(term))
+  }
+  
+  useEffect(()=>{
+    if(searchTerm) searchCharacterHandler(searchTerm) 
+  },[searchTerm])
+
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Home />}> </Route>
-        <Route path="/detail/:id" element={<DetailCard/>}> </Route>
-      </Routes>
-    </div>
+    <>
+      <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
+      <Characters characters={characters} setSelectCharacter={setSelectCharacter} />
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen} selectCharacter={selectCharacter} setSelectCharacter={setSelectCharacter} />
+    </>
   );
 }
 
