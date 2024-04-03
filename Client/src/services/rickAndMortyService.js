@@ -78,7 +78,6 @@ export const getCharacters = async (term, object) => {
 
     return allCharacters;
   } catch (error) {
-    console.error("Error fetching data:", error);
     return [];
   }
 };
