@@ -1,17 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { CardStyled } from "../styledComponents/cardsStyled";
 import { Character } from "./Character";
+import { Subtitle } from "../styledComponents/filtersStyled";
 
 export const Characters = ({ characters, setSelectCharacter }) => {
   return (
     <CardStyled className="characters">
-      {characters?.map((character) => (
-        <Character
-          key={character.id}
-          character={character}
-          setSelectCharacter={setSelectCharacter}
-        />
-      ))}
+      {characters.length === 0 ? (
+        <Subtitle style={{ alignItems: "center" }}>
+          No hay personajes con estos filtros
+        </Subtitle>
+      ) : (
+        characters.map((character) => (
+          <Character
+            key={character.id}
+            character={character}
+            setSelectCharacter={setSelectCharacter}
+          />
+        ))
+      )}
     </CardStyled>
   );
 };
