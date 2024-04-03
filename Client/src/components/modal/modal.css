@@ -19,10 +19,10 @@
     justify-content: center;
     background-color: #353c43de;
     color: aliceblue;
-    margin: 15% auto;
-    padding: 20px;
+    margin: 10% auto;
+    padding: 0px;
     border: 1px solid #888;
-    border-radius: 15px;
+    border-radius: 20px;
     width: 30%;
   }
   @media (max-width: 768px) {

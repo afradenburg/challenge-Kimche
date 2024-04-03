@@ -52,7 +52,7 @@ export const getCharacters = async (term, object) => {
             }
           }`,
         variables: {
-          page, // Asegúrate de usar la variable de loop `page` aquí.
+          page,
           getStatus: object.getStatus ?? "", 
           getSpecies: object.getSpecies ?? "",
           getGender: object.getGender ?? "",
