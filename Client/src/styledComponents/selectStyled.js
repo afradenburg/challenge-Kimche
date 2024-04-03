@@ -32,6 +32,7 @@ export const StyledSelect = styled.select`
 
 export const FilterButton = styled.button`
   padding: 10px 20px;
+  margin-right: 10px;
   border: none;
   border-radius: 5px;
   background-color: #007bff;

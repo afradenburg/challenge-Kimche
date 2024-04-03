@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FilterButton, FormContainer, StyledSelect, Subtitle } from "../styledComponents/selectStyled";
 
-export const Filters = ({speciesList, genderList, statusList, setFilters}) => {
+export const Filters = ({speciesList, genderList, statusList, setFilters, setSearchTerm}) => {
   const [selectedSpecies, setSelectedSpecies] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
   const [selectStatus, setSelectStatus] = useState("");
@@ -13,10 +13,14 @@ export const Filters = ({speciesList, genderList, statusList, setFilters}) => {
       getGender: selectedGender,
       getStatus: selectStatus,
     });
+  };
+
+  const reset = () => {
     setSelectedGender("");
     setSelectStatus("");
     setSelectedSpecies("");
-  };
+    setSearchTerm("");
+  }
 
   return (
     <>
@@ -67,6 +71,7 @@ export const Filters = ({speciesList, genderList, statusList, setFilters}) => {
         </div>
 
         <FilterButton type="submit">Filtrar</FilterButton>
+        <FilterButton style={{backgroundColor: "red"}} onClick={reset}> Limpar Filtros</FilterButton>
       </FormContainer>
     </>
   );

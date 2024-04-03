@@ -54,7 +54,6 @@ function App() {
     filtersCharacterHandler(filters)
   },[filters])
 
-
   return (
     <>
    <Header>
@@ -64,6 +63,7 @@ function App() {
         genderList={genderList}
         statusList={statusList}
         setFilters={setFilters}
+        setSearchTerm={setSearchTerm}
       />
    </Header>
       <Characters
