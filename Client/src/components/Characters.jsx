@@ -8,7 +8,7 @@ export const Characters = ({ characters, setSelectCharacter }) => {
     <CardStyled className="characters">
       {characters.length === 0 ? (
         <Subtitle style={{ alignItems: "center" }}>
-          No hay personajes con estos filtros
+          No hay personajes
         </Subtitle>
       ) : (
         characters.map((character) => (
