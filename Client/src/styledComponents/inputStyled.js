@@ -1,9 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
 const neonAnimation = keyframes`
-  0% {
-    box-shadow: 0 0 10px yellow;
-  }
   50% {
     box-shadow: 0 0 20px blue, 0 0 30px #00ff00;
   }

@@ -52,7 +52,6 @@ function App() {
 
   useEffect(()=>{
     filtersCharacterHandler(filters)
-    console.log(filters, "use")
   },[filters])
 
 
