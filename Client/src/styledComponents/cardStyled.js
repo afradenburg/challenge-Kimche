@@ -1,5 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-
+import styled, { keyframes } from "styled-components";
 
 const slideIn = keyframes`
   from {
@@ -21,7 +20,6 @@ const fadeIn = keyframes`
   }
 `;
 
-
 export const Content = styled.div`
   display: flex;
   justify-content: center;
@@ -36,14 +34,13 @@ export const CardStyle = styled.div`
   color: wheat;
   border-radius: 25px;
   width: 100%;
-  max-width: 250px;
-  /* min-width: 250px; */
+  max-width: 200px;
   max-height: 500px;
-  /* min-height: 500px; */
   padding: 20px;
   margin: 10px;
   text-align: center;
-  animation: ${slideIn} 1s ease-in-out forwards, ${fadeIn} 1s ease-in-out forwards;
+  animation: ${slideIn} 1s ease-in-out forwards,
+    ${fadeIn} 1s ease-in-out forwards;
 `;
 
 export const Button = styled.button`
@@ -62,23 +59,15 @@ export const Button = styled.button`
   }
 `;
 
-
-
-
-
 export const Image = styled.img`
-
-background-position: center;
+  background-position: center;
   width: 100%;
   max-width: 180px;
   margin-top: 10px;
-/* border  : 3px solid black ; */
-border-radius: 100px;
-height: 100%;
-max-height: 180px;
-&:hover {
-  border  : 3px solid #9bd5c5
+  border-radius: 100px;
+  height: 100%;
+  max-height: 180px;
+  &:hover {
+    border: 3px solid #9bd5c5;
   }
 `;
-
-

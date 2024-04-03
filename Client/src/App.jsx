@@ -4,6 +4,7 @@ import Search from "./components/Search";
 import { getCharacters } from "./services/rickAndMortyService";
 import { Modal } from "./components/modal/Modal";
 import { Filters } from "./components/Filters";
+import { Header } from  "./styledComponents/selectStyled"
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -55,13 +56,15 @@ function App() {
 
   return (
     <>
-      <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
+   <Header>
+   <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
       <Filters
         speciesList={speciesList}
         genderList={genderList}
         statusList={statusList}
         setFilters={setFilters}
       />
+   </Header>
       <Characters
         characters={characters}
         setSelectCharacter={setSelectCharacter}

@@ -13,10 +13,12 @@
   
   .modal-content {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    background-color: #fefefe;
+    background-color: #353c43de;
+    color: aliceblue;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -36,5 +38,5 @@
   
   .img {
     border-radius: 150px;
-    width: 80%;
+    width: 50%;
   }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FilterButton, FormContainer, StyledSelect, Subtitle } from "../styledComponents/selectStyled";
 
 export const Filters = ({speciesList, genderList, statusList, setFilters}) => {
   const [selectedSpecies, setSelectedSpecies] = useState("");
@@ -12,54 +13,61 @@ export const Filters = ({speciesList, genderList, statusList, setFilters}) => {
       getGender: selectedGender,
       getStatus: selectStatus,
     });
+    setSelectedGender("");
+    setSelectStatus("");
+    setSelectedSpecies("");
   };
 
   return (
-    <div>
-      <form onSubmit={handleFilterSubmit}>
+    <>
+        <Subtitle>Puedes Filtrar Por:</Subtitle>
+      <FormContainer onSubmit={handleFilterSubmit}>
+        <div>
+       
         {speciesList.length > 0 && (
-          <select
+          <StyledSelect
             value={selectedSpecies}
             onChange={(e) => setSelectedSpecies(e.target.value)}
-          >
+          > 
             {speciesList.map((species) => (
-              <option key={species} value={species}>
-                {species}
+              <option key={species} value={species} >
+               specie {species}
               </option>
             ))}
-          </select>
+          </StyledSelect>
         )}
+        </div>
 
         <div>
-          {genderList.length > 0 && ( <select
+          {genderList.length > 0 && ( <StyledSelect
               value={selectedGender}
               onChange={(e) => setSelectedGender(e.target.value)}
             >
               {genderList.map((gender) => (
                 <option key={gender} value={gender}>
-                  {gender}
+                  gender {gender}
                 </option>
               ))}
-            </select>
+            </StyledSelect>
           )}
+            </div>
           <div>
             {statusList.length > 0 && (
-              <select
-                value={selectedGender}
+              <StyledSelect
+                value={selectStatus}
                 onChange={(e) => setSelectStatus(e.target.value)}
               >
                 {statusList.map((status) => (
                   <option key={status} value={status}>
-                    {status}
+                    status {status}
                   </option>
                 ))}
-              </select>
+              </StyledSelect>
             )}
-          </div>
         </div>
 
-        <button type="submit">Filtrar</button>
-      </form>
-    </div>
+        <FilterButton type="submit">Filtrar</FilterButton>
+      </FormContainer>
+    </>
   );
 };

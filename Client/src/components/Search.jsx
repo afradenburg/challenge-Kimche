@@ -1,5 +1,6 @@
 import React from "react";
 import { SearchStyled } from "../styledComponents/searchStyled";
+import { InputStyled } from "../styledComponents/inputStyled";
 
 export default function Search({ setSearchTerm, searchTerm }) {
   const handleSearchInput = (event) => {
@@ -8,7 +9,7 @@ export default function Search({ setSearchTerm, searchTerm }) {
 
   return (
     <SearchStyled className="search">
-      <input
+      <InputStyled
       type="text"
       placeholder="Search by name"
       value={searchTerm}

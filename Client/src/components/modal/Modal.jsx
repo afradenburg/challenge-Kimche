@@ -17,11 +17,11 @@ export const Modal = ({ isOpen, setIsOpen, setSelectCharacter, selectCharacter }
     <div className={`modal ${!isOpen ? "hidden" : ""}`}>
       <div className='modal-content'>
         <button onClick={handleModal} >X</button>
-        <h1>Soy {name}</h1>
-        <img className="img" src={image} alt={name} />
-        <p>mi genero es {gender}</p>
-        <p>estoy {status}</p>
-        <p>soy de {location?.name}</p>
+        <h1>I am {name}</h1>
+          <img className="img" src={image} alt={name} />
+          <p>my gender is {gender}</p>
+          <p>I am {status}</p>
+          <p>I'm from {location?.name}</p>
       </div>
     </div>
   )
