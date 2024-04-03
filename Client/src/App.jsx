@@ -4,7 +4,7 @@ import Search from "./components/Search";
 import { getCharacters } from "./services/rickAndMortyService";
 import { Modal } from "./components/modal/Modal";
 import { Filters } from "./components/Filters";
-import { Header } from  "./styledComponents/selectStyled"
+import { Header } from  "./styledComponents/headerStyled"
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");

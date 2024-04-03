@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
 export const FormContainer = styled.form`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: nowrap;
-
-  @media screen and (max-width: 768px) {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
- width : 80% ;
-}
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80%;
+  }
 `;
 
 export const StyledSelect = styled.select`
@@ -46,19 +46,10 @@ export const FilterButton = styled.button`
   }
 `;
 export const Subtitle = styled.h2`
-   display: flex;
+  display: flex;
   flex-direction: column;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: "Comic Sans MS", cursive;
   text-shadow: 2px 2px 4px #00ff00;
   color: #00b0c8;
   font-size: 25px;
-`;
-
-export const Header = styled.header`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  flex-wrap: wrap;
-  background-color: #353c43;
 `;

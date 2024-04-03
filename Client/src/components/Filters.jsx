@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { FilterButton, FormContainer, StyledSelect, Subtitle } from "../styledComponents/selectStyled";
+import { FilterButton, FormContainer, StyledSelect, Subtitle } from "../styledComponents/filtersStyled";
 
-export const Filters = ({speciesList, genderList, statusList, setFilters, setSearchTerm}) => {
+export const Filters = ({speciesList, genderList, statusList, setFilters, setSearchTerm,}) => {
   const [selectedSpecies, setSelectedSpecies] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
   const [selectStatus, setSelectStatus] = useState("");
@@ -20,30 +20,30 @@ export const Filters = ({speciesList, genderList, statusList, setFilters, setSea
     setSelectStatus("");
     setSelectedSpecies("");
     setSearchTerm("");
-  }
+  };
 
   return (
     <>
-        <Subtitle>Puedes Filtrar Por:</Subtitle>
+      <Subtitle>Puedes Filtrar Por:</Subtitle>
       <FormContainer onSubmit={handleFilterSubmit}>
         <div>
-       
-        {speciesList.length > 0 && (
-          <StyledSelect
-            value={selectedSpecies}
-            onChange={(e) => setSelectedSpecies(e.target.value)}
-          > 
-            {speciesList.map((species) => (
-              <option key={species} value={species} >
-               specie {species}
-              </option>
-            ))}
-          </StyledSelect>
-        )}
+          {speciesList.length > 0 && (
+            <StyledSelect
+              value={selectedSpecies}
+              onChange={(e) => setSelectedSpecies(e.target.value)}
+            >
+              {speciesList.map((species) => (
+                <option key={species} value={species}>
+                  specie {species}
+                </option>
+              ))}
+            </StyledSelect>
+          )}
         </div>
 
         <div>
-          {genderList.length > 0 && ( <StyledSelect
+          {genderList.length > 0 && (
+            <StyledSelect
               value={selectedGender}
               onChange={(e) => setSelectedGender(e.target.value)}
             >
@@ -54,24 +54,27 @@ export const Filters = ({speciesList, genderList, statusList, setFilters, setSea
               ))}
             </StyledSelect>
           )}
-            </div>
-          <div>
-            {statusList.length > 0 && (
-              <StyledSelect
-                value={selectStatus}
-                onChange={(e) => setSelectStatus(e.target.value)}
-              >
-                {statusList.map((status) => (
-                  <option key={status} value={status}>
-                    status {status}
-                  </option>
-                ))}
-              </StyledSelect>
-            )}
+        </div>
+        <div>
+          {statusList.length > 0 && (
+            <StyledSelect
+              value={selectStatus}
+              onChange={(e) => setSelectStatus(e.target.value)}
+            >
+              {statusList.map((status) => (
+                <option key={status} value={status}>
+                  status {status}
+                </option>
+              ))}
+            </StyledSelect>
+          )}
         </div>
 
         <FilterButton type="submit">Filtrar</FilterButton>
-        <FilterButton style={{backgroundColor: "red"}} onClick={reset}> Limpar Filtros</FilterButton>
+        <FilterButton style={{ backgroundColor: "red" }} onClick={reset}>
+          {" "}
+          Limpar Filtros
+        </FilterButton>
       </FormContainer>
     </>
   );
