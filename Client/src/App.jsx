@@ -31,7 +31,7 @@ function App() {
         characters.map((character) => character.species)
       );
       setSpeciesList(Array.from(uniqueSpecies));
-
+      
       const uniqueGender = new Set(
         characters.map((character) => character.gender)
       );
