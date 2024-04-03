@@ -28,15 +28,17 @@ function App() {
   useEffect(() => {
     if (updateCount > 2 && updateCount < 5 && characters.length > 0) {
       const uniqueSpecies = new Set(
-        characters.flatMap((character) => character.species)
+        characters.map((character) => character.species)
       );
       setSpeciesList(Array.from(uniqueSpecies));
+
       const uniqueGender = new Set(
-        characters.flatMap((character) => character.gender)
+        characters.map((character) => character.gender)
       );
       setGenderList(Array.from(uniqueGender));
+      
       const uniqueStatus = new Set(
-        characters.flatMap((character) => character.status)
+        characters.map((character) => character.status)
       );
       setStatusList(Array.from(uniqueStatus));
     }
