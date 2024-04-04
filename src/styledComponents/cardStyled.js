@@ -43,19 +43,19 @@ export const CardStyle = styled.div`
     ${fadeIn} 1s ease-in-out forwards;
 `;
 
-export const Button = styled.button`
-  background-color: #f5f5f5;
-  border: 3px;
-  border-radius: 8%;
-  margin-top: 15px;
-  margin-right: 15px;
+export const CloseButton = styled.button`
   padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
   font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+
   &:hover {
-    color: blue;
-    text-decoration: underline;
-    background-color: #9bd5c5;
+    background-color: #0056b3;
   }
 `;
 

@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import { useQuery } from '@apollo/client';
 import { GET_CHARACTERS } from "./services/querysService";
@@ -6,6 +7,7 @@ import Search from "./components/Search";
 import { Modal } from "./components/modal/Modal";
 import { Header } from "./styledComponents/headerStyled";
 import Pager from "./components/Pager";
+import { Subtitle } from "./styledComponents/filtersStyled";
 
 const initialSearchTerm = {
   term: "",
@@ -54,7 +56,7 @@ function App() {
         />
       </Header>
       {loading ? 
-        <p>Loading...</p> :
+        <Subtitle>Loading...</Subtitle> :
         <>
           <Characters
             characters={data.characters.results}

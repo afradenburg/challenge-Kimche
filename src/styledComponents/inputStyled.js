@@ -12,6 +12,7 @@ const neonAnimation = keyframes`
 export const InputStyled = styled.input`
   width: 300px;
   height: 30px;
+  margin-right: 10px;
   text-align: center;
   background-color: white;
   box-shadow: 0 0 10px #00ff00;

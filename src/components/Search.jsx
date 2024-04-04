@@ -1,5 +1,7 @@
+import React from "react";
 import { SearchStyled } from "../styledComponents/searchStyled";
 import { InputStyled } from "../styledComponents/inputStyled";
+import { StyledSelect, Subtitle } from "../styledComponents/filtersStyled";
 
 export default function Search({
   setSearchTerm,
@@ -33,54 +35,51 @@ export default function Search({
           name="term"
         />
       </div>
-      <h2>filtros:</h2>
+      <Subtitle>can you filter by:</Subtitle>
       <div>
-        <label htmlFor="species">Selecciona una opción:</label>
-        <select
+        <StyledSelect
           id="species"
           value={searchTerm.specie}
           onChange={handleSelectChange}
           name="specie"
         >
-          <option value="">Selecciona una opción</option>
+          <option value="">Select an option</option>
           {speciesList.map((specie) => (
             <option key={specie} value={specie}>
               {specie}
             </option>
           ))}
-        </select>
+        </StyledSelect>
       </div>
       <div>
-        <label htmlFor="genders">Selecciona una opción:</label>
-        <select
+        <StyledSelect
           id="genders"
           value={searchTerm.gender}
           onChange={handleSelectChange}
           name="gender"
         >
-          <option value="">Selecciona una opción</option>
+          <option value="">Selecciona an option</option>
           {gendersList.map((gender) => (
             <option key={gender} value={gender}>
               {gender}
             </option>
           ))}
-        </select>
+        </StyledSelect>
       </div>
       <div>
-        <label htmlFor="status">Selecciona una opción:</label>
-        <select
+        <StyledSelect
           id="status"
           value={searchTerm.status}
           onChange={handleSelectChange}
           name="status"
         >
-          <option value="">Selecciona una opción</option>
+          <option value="">Select an option</option>
           {statusList.map((status) => (
             <option key={status} value={status}>
               {status}
             </option>
           ))}
-        </select>
+        </StyledSelect>
       </div>
       <div>
         <button onClick={()=>handleResetSearchTerm()}>Reset</button>

@@ -1,3 +1,6 @@
+import React from "react";
+
+
 export default function Pager({ infoPage, searchTerm, setSearchTerm }) {
   const { pages } = infoPage;
 

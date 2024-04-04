@@ -16,7 +16,7 @@ export const Modal = ({ isOpen, setIsOpen, setSelectCharacter, selectCharacter }
   return (
     <div className={`modal ${!isOpen ? "hidden" : ""}`}>
       <div className='modal-content'>
-        <button onClick={handleModal} >X</button>
+        <button className='button' onClick={handleModal} >X</button>
         <h1>I am {name}</h1>
           <img className="img" src={image} alt={name} />
           <p>my gender is {gender}</p>

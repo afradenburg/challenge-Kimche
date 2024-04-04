@@ -30,21 +30,6 @@ export const StyledSelect = styled.select`
   }
 `;
 
-export const FilterButton = styled.button`
-  padding: 10px 20px;
-  margin-right: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #0056b3;
-  }
-`;
 export const Subtitle = styled.h2`
   display: flex;
   flex-direction: column;
