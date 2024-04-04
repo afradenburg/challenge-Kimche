@@ -7,7 +7,7 @@ import Search from "./components/Search";
 import { Modal } from "./components/modal/Modal";
 import { Header } from "./styledComponents/headerStyled";
 import Pager from "./components/Pager";
-import { Subtitle } from "./styledComponents/filtersStyled";
+import { Subtitle } from "./styledComponents/filtersStyled"; 
 
 const initialSearchTerm = {
   term: "",
@@ -44,6 +44,7 @@ function App() {
   }, [data])
 
   if (error) return <p>Error : {error.message}</p>;
+  
   return (
     <>
       <Header>
