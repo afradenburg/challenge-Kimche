@@ -1,7 +1,7 @@
 import React from "react";
-import { SearchStyled } from "../styledComponents/searchStyled";
+import { ResetStyled, SearchStyled } from "../styledComponents/searchStyled";
 import { InputStyled } from "../styledComponents/inputStyled";
-import { StyledSelect, Subtitle } from "../styledComponents/filtersStyled";
+import { FormContainer, StyledSelect, Subtitle } from "../styledComponents/filtersStyled";
 
 export default function Search({
   setSearchTerm,
@@ -36,6 +36,7 @@ export default function Search({
         />
       </div>
       <Subtitle>can you filter by:</Subtitle>
+      <FormContainer>
       <div>
         <StyledSelect
           id="species"
@@ -82,9 +83,11 @@ export default function Search({
         </StyledSelect>
       </div>
       <div>
-        <button onClick={()=>handleResetSearchTerm()}>Reset</button>
+        <ResetStyled onClick={()=>handleResetSearchTerm()}>Reset</ResetStyled>
       </div>
+    </FormContainer>
     </SearchStyled>
+
   );
 }
 

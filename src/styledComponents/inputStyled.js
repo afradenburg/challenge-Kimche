@@ -35,6 +35,7 @@ export const InputStyled = styled.input`
   padding: 2% 1%;
   width: 100%;
   max-width: 300px;
+  margin-top: 20px;
 }
 `;
 

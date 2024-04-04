@@ -1,4 +1,6 @@
 import React from "react";
+import { Header } from "../styledComponents/headerStyled";
+import { CloseButton } from "../styledComponents/cardStyled";
 
 
 export default function Pager({ infoPage, searchTerm, setSearchTerm }) {
@@ -10,18 +12,18 @@ export default function Pager({ infoPage, searchTerm, setSearchTerm }) {
   };
 
   return (
-    <div className="">
+    <Header style={{backgroundColor: "white"}}>
       {(searchTerm.page - 1) !== 0 ? (
-        <button onClick={() => handlePage(searchTerm.page - 1)}>Prev</button>
+        <CloseButton onClick={() => handlePage(searchTerm.page - 1)}>Prev</CloseButton>
         ) : (
-        <button disabled>Prev</button>
+        <CloseButton style={{backgroundColor: "gray"}} disabled>Prev</CloseButton>
         )}
-      <p>Page: {`${searchTerm.page} / ${pages}`}</p>
+      <p>Page: {`${searchTerm.page} / ${pages || "1"}`}</p>
       {(searchTerm.page + 1) <= pages ? (
-        <button onClick={() => handlePage(searchTerm.page + 1)}>Next</button>
+        <CloseButton onClick={() => handlePage(searchTerm.page + 1)}>Next</CloseButton>
         ) : (
-        <button disabled>Next</button>
+        <CloseButton style={{backgroundColor: "gray"}} disabled>Next</CloseButton>
       )}
-    </div>
+    </Header>
   );
 }
