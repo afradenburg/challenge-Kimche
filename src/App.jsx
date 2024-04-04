@@ -5,8 +5,8 @@ import { GET_CHARACTERS } from "./services/querysService";
 import { Characters } from "./components/Characters";
 import Search from "./components/Search";
 import { Modal } from "./components/modal/Modal";
-import { Header } from "./styledComponents/headerStyled";
 import Pager from "./components/Pager";
+import { Header } from "./styledComponents/headerStyled";
 import { Subtitle } from "./styledComponents/filtersStyled"; 
 
 const initialSearchTerm = {
@@ -24,7 +24,7 @@ function App() {
   const [speciesList, setSpeciesList] = useState([]);
   const [gendersList, setGendersList] = useState([]);
   const [statusList, setStatusList] = useState([]);
-  
+
   const { loading, data } = useQuery(GET_CHARACTERS, {
     variables: { term: searchTerm.term || null, specie: searchTerm.specie || null, gender: searchTerm.gender || null, status: searchTerm.status || null, page: searchTerm.page || 1 },
   })
