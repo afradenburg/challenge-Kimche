@@ -1,7 +1,7 @@
 export const getCharacters = async (term, object) => {
   try {
-    let allCharacters = [];
-    const totalPages = 3;
+    let allCharacters = []; 
+    const totalPages = 3; 
 
     if (term && term.length !== 0) {
       const queryByName = `
@@ -23,16 +23,13 @@ export const getCharacters = async (term, object) => {
         }
       `;
 
-      const responseByName = await fetch(
-        "https://rickandmortyapi.com/graphql",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ query: queryByName }),
-        }
-      );
+      const responseByName = await fetch("https://rickandmortyapi.com/graphql", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: queryByName }),
+      });
       const resultByName = await responseByName.json();
-      return resultByName.data.characters.results;
+      return resultByName.data.characters.results; 
     }
 
     for (let page = 1; page <= totalPages; page++) {
@@ -56,7 +53,7 @@ export const getCharacters = async (term, object) => {
           }`,
         variables: {
           page,
-          getStatus: object.getStatus ?? "",
+          getStatus: object.getStatus ?? "", 
           getSpecies: object.getSpecies ?? "",
           getGender: object.getGender ?? "",
         },
@@ -72,12 +69,14 @@ export const getCharacters = async (term, object) => {
 
       const result = await response.json();
       const fetchedCharacters = result.data.characters.results;
-
+      
       allCharacters = allCharacters.concat(fetchedCharacters);
     }
 
-    return allCharacters;
+    return allCharacters; 
   } catch (error) {
-    return [];
+    console.error("Error fetching data:", error);
+    return []; 
   }
 };
+

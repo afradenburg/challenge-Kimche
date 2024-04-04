@@ -68,6 +68,6 @@ export const Image = styled.img`
   height: 100%;
   max-height: 180px;
   &:hover {
-    border: 3px solid #9bd5c5;
+    outline: 3px solid #9bd5c5;
   }
 `;

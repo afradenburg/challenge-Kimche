@@ -11,4 +11,5 @@ body {
   min-width: inherit;
   min-height: inherit;
   position: relative;
+  align-items: center;
 }

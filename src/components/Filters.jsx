@@ -1,10 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FilterButton, FormContainer, StyledSelect, Subtitle } from "../styledComponents/filtersStyled";
+import { useQuery } from "@apollo/client";
+import { BUTTONS_FILTERS } from "../services/querysService";
+
 
 export const Filters = ({speciesList, genderList, statusList, setFilters, setSearchTerm,}) => {
   const [selectedSpecies, setSelectedSpecies] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
   const [selectStatus, setSelectStatus] = useState("");
+  const [allCharacters, setAllCharacters] = useState([]);
+
+  const queryOptions = {
+    query: BUTTONS_FILTERS,
+    variables: {
+      page: 1,
+    },
+  };
+  const { loading, error, data, fetchMore } = useQuery(queryOptions.query, {
+    variables: queryOptions.variables,
+    skip: !queryOptions.query,
+    notifyOnNetworkStatusChange: true,
+  });
+
+  useEffect(() => {
+    if (data) {
+      const newCharacters = data.characters.results.filter(
+        (newCharacter) =>
+        !allCharacters.some(
+          (existingCharacter) => existingCharacter.species === newCharacter.species
+          )
+      );
+
+      setAllCharacters((prev) => [...prev, ...newCharacters]);
+
+    }
+  }, []);
+  if (loading) return <Subtitle>Loading...</Subtitle>;
+  if (error) return <p>Error :</p>;
+  
 
   const handleFilterSubmit = (e) => {
     e.preventDefault();

@@ -5,6 +5,7 @@ import { getCharacters } from "./services/rickAndMortyService";
 import { Modal } from "./components/modal/Modal";
 import { Filters } from "./components/Filters";
 import { Header } from  "./styledComponents/headerStyled"
+import CharactersContainer from "./components/CharactersContainer";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -64,12 +65,13 @@ function App() {
         statusList={statusList}
         setFilters={setFilters}
         setSearchTerm={setSearchTerm}
-      />
+        />
    </Header>
-      <Characters
+        <CharactersContainer term={searchTerm} object={filters} setSelectCharacter={setSelectCharacter} />
+      {/* <Characters
         characters={characters}
         setSelectCharacter={setSelectCharacter}
-      />
+      /> */}
       <Modal
         isOpen={isOpen}
         setIsOpen={setIsOpen}
