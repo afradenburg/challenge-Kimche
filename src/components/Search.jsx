@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { ResetStyled, SearchStyled } from "../styledComponents/searchStyled";
 import { InputStyled } from "../styledComponents/inputStyled";
 import { FormContainer, StyledSelect, Subtitle } from "../styledComponents/filtersStyled";
+import { GET_FILTERS } from "../services/querysService";
+import { useApolloClient } from "@apollo/client";
 
 export default function Search({
   setSearchTerm,
@@ -9,7 +11,44 @@ export default function Search({
   speciesList,
   gendersList,
   statusList,
+  setSpeciesList,
+  setGendersList,
+  setStatusList
 }) {
+  const apolloClient = useApolloClient();
+
+  useEffect(() => {
+    const fetchButtons = async () => {
+      const totalPages = 3; 
+      let species = new Set(speciesList);
+      let gender = new Set(gendersList);
+      let status = new Set(statusList)
+
+      try {
+        for (let page = 1; page <= totalPages; page++) {
+          const { data } = await apolloClient.query({
+            query: GET_FILTERS,
+            variables: { page },
+          });
+
+          const results = data.characters.results;
+          results.forEach(result => {
+            species.add(result.species);
+            gender.add(result.gender);
+            status.add(result.status);
+          });
+        }
+        setSpeciesList([speciesList =>speciesList, ...species]);
+        setGendersList([genderList =>genderList, ...gender]);
+        setStatusList([statusList =>statusList, ...status])
+      } catch (error) {
+        console.log("Error al obtener buttons", error);
+      }
+    };
+
+    fetchButtons();
+  }, []);
+
   const handleSelectChange = (event) => {
     const { name, value } = event.target;
     setSearchTerm({ ...searchTerm, [name]: value, page: 1 });
@@ -44,7 +83,7 @@ export default function Search({
           onChange={handleSelectChange}
           name="specie"
         >
-          <option value="">Select an option</option>
+          <option value="">Select an option Specie</option>
           {speciesList.map((specie) => (
             <option key={specie} value={specie}>
               {specie}
@@ -59,7 +98,7 @@ export default function Search({
           onChange={handleSelectChange}
           name="gender"
         >
-          <option value="">Selecciona an option</option>
+          <option value="">Selecciona an Gender</option>
           {gendersList.map((gender) => (
             <option key={gender} value={gender}>
               {gender}
@@ -74,7 +113,7 @@ export default function Search({
           onChange={handleSelectChange}
           name="status"
         >
-          <option value="">Select an option</option>
+          <option value="">Select an Status</option>
           {statusList.map((status) => (
             <option key={status} value={status}>
               {status}

@@ -18,7 +18,7 @@ export default function Pager({ infoPage, searchTerm, setSearchTerm }) {
         ) : (
         <CloseButton style={{backgroundColor: "gray"}} disabled>Prev</CloseButton>
         )}
-      <p>Page: {`${searchTerm.page} / ${pages || "1"}`}</p>
+      <p>Page: {`${searchTerm.page} / ${pages || "1"}  `}</p>
       {(searchTerm.page + 1) <= pages ? (
         <CloseButton onClick={() => handlePage(searchTerm.page + 1)}>Next</CloseButton>
         ) : (

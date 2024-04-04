@@ -46,6 +46,7 @@ export const CardStyle = styled.div`
 export const CloseButton = styled.button`
   padding: 10px 20px;
   margin-right: 10px;
+  margin-left: 5px;
   border: none;
   border-radius: 5px;
   background-color: #007bff;

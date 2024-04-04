@@ -22,3 +22,20 @@ export const GET_CHARACTERS = gql`
     }
   }
 `;
+
+export const GET_FILTERS = gql`
+  query characters ($page: Int) {
+    characters(page: $page) {
+      results {
+        id,
+        species,
+        gender,
+        status,
+      },
+      info {
+        count
+        pages
+      }
+    }
+  }
+`;

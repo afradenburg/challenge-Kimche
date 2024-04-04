@@ -9,7 +9,7 @@ export const FormContainer = styled.form`
 
   @media screen and (max-width: 768px) {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     width: 80%;
   }
