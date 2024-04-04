@@ -1,77 +1,72 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useQuery } from '@apollo/client';
+import { GET_CHARACTERS } from "./services/querysService";
 import { Characters } from "./components/Characters";
 import Search from "./components/Search";
-import { getCharacters } from "./services/rickAndMortyService";
 import { Modal } from "./components/modal/Modal";
-import { Filters } from "./components/Filters";
-import { Header } from  "./styledComponents/headerStyled"
-import CharactersContainer from "./components/CharactersContainer";
+import { Header } from "./styledComponents/headerStyled";
+import Pager from "./components/Pager";
+
+const initialSearchTerm = {
+  term: "",
+  specie: "",
+  gender: "",
+  status: "",
+  page: 1,
+}
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [characters, setCharacters] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
+  const { loading, error, data } = useQuery(GET_CHARACTERS, {
+    variables: { term: searchTerm.term || null, specie: searchTerm.specie || null, gender: searchTerm.gender || null, status: searchTerm.status || null, page: searchTerm.page || 1 },
+  })
   const [selectCharacter, setSelectCharacter] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const [speciesList, setSpeciesList] = useState([]);
-  const [genderList, setGenderList] = useState([]);
-  const [statusList, setStatusList] = useState([])
-  const [updateCount, setUpdateCount] = useState(0);
-  const [filters, setFilters] = useState({ getStatus: "", getSpecies: "", getGender: "" });
-
-  const searchCharacterHandler = async (term, object) => {
-    setCharacters(await getCharacters(term, object));
-  };
-
-  useEffect(() => {
-    searchCharacterHandler(searchTerm, filters);
-  }, [searchTerm]);
-
-  useEffect(() => {
-    if (updateCount > 2 && updateCount < 5 && characters.length > 0) {
-      const uniqueSpecies = new Set(
-        characters.map((character) => character.species)
-      );
-      setSpeciesList(Array.from(uniqueSpecies));
-      
-      const uniqueGender = new Set(
-        characters.map((character) => character.gender)
-      );
-      setGenderList(Array.from(uniqueGender));
-      
-      const uniqueStatus = new Set(
-        characters.map((character) => character.status)
-      );
-      setStatusList(Array.from(uniqueStatus));
-    }
-    if (characters.length > 0 && updateCount < 5)
-      setUpdateCount((prevCount) => prevCount + 1);
-  }, [characters, updateCount]);
-
-  const filtersCharacterHandler = async (object) => {
-    setCharacters(await getCharacters("", object))
-  }
+  const [gendersList, setGendersList] = useState([]);
+  const [statusList, setStatusList] = useState([]);
 
   useEffect(()=>{
-    filtersCharacterHandler(filters)
-  },[filters])
+    const species = new Set(data?.characters?.results.map(character => character.species))
+    setSpeciesList(species)
+  }, [data])
 
+  useEffect(()=>{
+    const genders = new Set(data?.characters?.results.map(character => character.gender))
+    setGendersList(genders)
+  }, [data])
+
+  useEffect(()=>{
+    const status = new Set(data?.characters?.results.map(character => character.status))
+    setStatusList(status)
+  }, [data])
+
+  if (error) return <p>Error : {error.message}</p>;
   return (
     <>
-   <Header>
-   <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
-      <Filters
-        speciesList={speciesList}
-        genderList={genderList}
-        statusList={statusList}
-        setFilters={setFilters}
-        setSearchTerm={setSearchTerm}
+      <Header>
+        <Search 
+          setSearchTerm={setSearchTerm}
+          searchTerm={searchTerm}
+          speciesList={[...speciesList]}
+          gendersList={[...gendersList]}
+          statusList={[...statusList]}
         />
-   </Header>
-        <CharactersContainer term={searchTerm} object={filters} setSelectCharacter={setSelectCharacter} />
-      {/* <Characters
-        characters={characters}
-        setSelectCharacter={setSelectCharacter}
-      /> */}
+      </Header>
+      {loading ? 
+        <p>Loading...</p> :
+        <>
+          <Characters
+            characters={data.characters.results}
+            setSelectCharacter={setSelectCharacter}
+          />
+          <Pager 
+            infoPage={data.characters.info} 
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm} 
+          />
+        </>
+      }
       <Modal
         isOpen={isOpen}
         setIsOpen={setIsOpen}
@@ -80,6 +75,10 @@ function App() {
       />
     </>
   );
+
+
+ 
+
 }
 
 export default App;
